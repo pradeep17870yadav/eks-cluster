@@ -115,25 +115,25 @@ resource "aws_eks_addon" "ebs-csi" {
 }
 
 
-# Port resources
-resource "port_entity" "eks_cluster" {
-  identifier = module.eks.cluster_arn
-  title      = module.eks.cluster_name
-  blueprint  = "eks"
-  run_id     = var.port_run_id
-  properties = {
-    string_props = {
-      "version"  = module.eks.cluster_version,
-      "name"     = module.eks.cluster_name,
-      "endpoint" = module.eks.cluster_endpoint,
-      "roleArn"  = module.eks.cluster_iam_role_arn
-    }
-  }
-  relations = {
-    single_relations = {
-      "region" = var.region
-    }
-  }
+# # Port resources
+# resource "port_entity" "eks_cluster" {
+#   identifier = module.eks.cluster_arn
+#   title      = module.eks.cluster_name
+#   blueprint  = "eks"
+#   run_id     = var.port_run_id
+#   properties = {
+#     string_props = {
+#       "version"  = module.eks.cluster_version,
+#       "name"     = module.eks.cluster_name,
+#       "endpoint" = module.eks.cluster_endpoint,
+#       "roleArn"  = module.eks.cluster_iam_role_arn
+#     }
+#   }
+#   relations = {
+#     single_relations = {
+#       "region" = var.region
+#     }
+#   }
 
-  depends_on = [module.eks.cluster_name]
-}
+#   depends_on = [module.eks.cluster_name]
+# }
