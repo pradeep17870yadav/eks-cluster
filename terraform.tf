@@ -25,6 +25,12 @@ terraform {
       version = "2.0.3"
     }
   }
+   backend "s3" {
+    bucket         = "terraform-tf-state-file-bucket-1"
+    key            = "terraform.tfstate"
+    region         = "us-west-2"
+    encrypt        = true
+  }
 
   required_version = "~> 1.3"
 }
